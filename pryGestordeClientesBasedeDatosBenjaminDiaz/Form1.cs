@@ -22,5 +22,11 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             Form frmListadoClientes = new frmListadoClientes();
             frmListadoClientes.ShowDialog();
         }
+
+        private void listadoDeClientesDeudoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmClientesDeudores = new frmClientesDeudores();
+            frmClientesDeudores.ShowDialog();
+        }
     }
 }
