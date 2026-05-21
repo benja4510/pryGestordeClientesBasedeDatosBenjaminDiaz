@@ -30,6 +30,9 @@
         {
             this.gboConsulta = new System.Windows.Forms.GroupBox();
             this.dgvGrilla = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,9 +40,7 @@
             this.lblCantidad = new System.Windows.Forms.Label();
             this.lblPromedioDeuda = new System.Windows.Forms.Label();
             this.btnListar = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReportar = new System.Windows.Forms.Button();
             this.gboConsulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +66,22 @@
             this.dgvGrilla.Name = "dgvGrilla";
             this.dgvGrilla.Size = new System.Drawing.Size(482, 247);
             this.dgvGrilla.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Nombre";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Deuda";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Codigo";
+            this.Column3.Name = "Column3";
             // 
             // label1
             // 
@@ -127,27 +144,22 @@
             this.btnListar.UseVisualStyleBackColor = true;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
-            // Column1
+            // btnReportar
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Deuda";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Codigo";
-            this.Column3.Name = "Column3";
+            this.btnReportar.Location = new System.Drawing.Point(224, 421);
+            this.btnReportar.Name = "btnReportar";
+            this.btnReportar.Size = new System.Drawing.Size(107, 41);
+            this.btnReportar.TabIndex = 8;
+            this.btnReportar.Text = "Reportar Cliente";
+            this.btnReportar.UseVisualStyleBackColor = true;
+            this.btnReportar.Click += new System.EventHandler(this.btnReportar_Click);
             // 
             // frmClientesDeudores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 474);
+            this.Controls.Add(this.btnReportar);
             this.Controls.Add(this.btnListar);
             this.Controls.Add(this.lblPromedioDeuda);
             this.Controls.Add(this.lblCantidad);
@@ -179,5 +191,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Button btnReportar;
     }
 }

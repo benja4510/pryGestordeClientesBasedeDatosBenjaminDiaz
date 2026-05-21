@@ -20,10 +20,17 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
         private void btnListar_Click(object sender, EventArgs e)
         {
             clsCliente x = new clsCliente();
-            x.ListarDeudores(dgvGrilla);
+            x.ReporteCliente(dgvGrilla);
             lblCantidad.Text = x.CantidadDeudores.ToString("0.00");
             lblTotal.Text = x.TotalDeuda.ToString();
             lblPromedioDeuda.Text = x.PromedioDeuda.ToString("0.00");
+        }
+
+        private void btnReportar_Click(object sender, EventArgs e)
+        {
+            clsCliente x = new clsCliente();
+            x.ReporteCliente(dgvGrilla);
+            MessageBox.Show("Reporte generado correctamente", "Reporte de Clientes Deudores", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
