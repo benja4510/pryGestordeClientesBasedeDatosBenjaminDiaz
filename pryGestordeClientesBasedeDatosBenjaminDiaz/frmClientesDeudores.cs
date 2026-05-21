@@ -20,7 +20,7 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
         private void btnListar_Click(object sender, EventArgs e)
         {
             clsCliente x = new clsCliente();
-            x.ReporteCliente(dgvGrilla);
+            x.ListarDeudores(dgvGrilla);
             lblCantidad.Text = x.CantidadDeudores.ToString("0.00");
             lblTotal.Text = x.TotalDeuda.ToString();
             lblPromedioDeuda.Text = x.PromedioDeuda.ToString("0.00");
