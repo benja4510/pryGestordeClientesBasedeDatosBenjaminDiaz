@@ -87,6 +87,51 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             }
         }
 
+        public void ListarDeudores(DataGridView Grilla)
+        {
+            try
+            {
+                conexion.ConnectionString = CadenaConexion;
+                conexion.Open();
+
+
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.TableDirect;
+                comando.CommandText = "SELECT * FROM [Cliente]";
+
+                OleDbDataReader DR = comando.ExecuteReader();
+                StreamWriter AD = new StreamWriter("ReporteClientes.csv", false, Encoding.UTF8);
+
+                cantidad = 0;
+                deuda = 0;
+                Grilla.Rows.Clear();
+
+                if (DR.HasRows)
+                {
+
+                    while (DR.Read())
+                    {
+                        if (DR.GetDecimal(2) > 0)
+                        {
+
+                            Grilla.Rows.Add(DR.GetInt32(0), DR.GetString(1), DR.GetDecimal(2));
+                            cantidad++;
+                            deuda = deuda + DR.GetDecimal(2);
+                        }
+                    }
+                }
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+
+
+
         public void ReporteCliente(DataGridView Grilla)
         {
             try
