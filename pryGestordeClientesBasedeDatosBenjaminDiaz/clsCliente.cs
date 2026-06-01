@@ -90,7 +90,6 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             get { return idAu; }
             set { idAu = value; }
         }
-        
 
         //Método para listar todos los clientes en un DataGridView
         //Método para listar todos los clientes en un DataGridView
@@ -125,7 +124,6 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
                 MessageBox.Show(e.ToString());
             }
         }
-
         public void ListarDeudores(DataGridView Grilla)
         {
             try
@@ -167,10 +165,6 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
                 MessageBox.Show(e.ToString());
             }
         }
-
-
-
-
         public void ReporteCliente(DataGridView Grilla)
         {
             try
@@ -183,7 +177,7 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
                 comando.CommandText = "SELECT * FROM [Cliente]";
 
                 OleDbDataReader DR = comando.ExecuteReader();
-                StreamWriter AD = new StreamWriter("ReporteClientes.csv", false,Encoding.UTF8);
+                StreamWriter AD = new StreamWriter("ReporteClientes.csv", false, Encoding.UTF8);
 
                 AD.WriteLine("Listado de clientes");
                 AD.WriteLine("Codigo;Nombre;Deuda"); // Usamos punto y coma para mantener el estándar de Excel
@@ -231,9 +225,9 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             {
                 MessageBox.Show(e.ToString());
             }
-        }   
+        }
 
-        public void Buscar (Int32 idCliente)
+        public void Buscar(Int32 idCliente)
         {
             try
             {
@@ -246,11 +240,11 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
 
                 OleDbDataReader DR = comando.ExecuteReader();
 
-                if(DR.HasRows)
+                if (DR.HasRows)
                 {
-                    while(DR.HasRows)
+                    while (DR.HasRows)
                     {
-                        if(DR.GetInt32(0) == idCliente)
+                        if (DR.GetInt32(0) == idCliente)
                         {
                             idCli = DR.GetInt32(0);
                             nom = DR.GetString(1);
@@ -262,14 +256,47 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
                 }
 
             }
-            catch ( Exception e )
+            catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
 
         }
+        public void Agregar()
+        {
+            try
+            {
+                conexion.ConnectionString = CadenaConexion;
+                conexion.Open();
 
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = Tabla;
 
+                adaptador = new OleDbDataAdapter(comando);
+                DataSet DS = new DataSet(); 
+                adaptador.Fill(DS);
+
+                DataTable tabla = DS.Tables[Tabla];
+                DataRow fila = tabla.NewRow();
+
+                fila["Nombre"]=nom;
+                fila["Deuda"]=deu;
+                fila["Limite"]=lim;
+                fila["idAutomovil"]=idAu;
+
+                tabla.Rows.Add(fila);
+                OleDbCommandBuilder ConciliaCambios = new OleDbCommandBuilder(adaptador);
+                adaptador.Update(DS, Tabla);
+                
+                conexion.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
     }
 }
 
