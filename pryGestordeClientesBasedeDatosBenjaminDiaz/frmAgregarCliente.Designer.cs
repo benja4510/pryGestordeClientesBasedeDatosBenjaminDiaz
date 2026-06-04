@@ -37,11 +37,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnCargarSQL = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCargarSQL);
             this.groupBox1.Controls.Add(this.cmbAutomovil);
             this.groupBox1.Controls.Add(this.btnCargar);
             this.groupBox1.Controls.Add(this.txtLimite);
@@ -51,7 +53,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(22, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(461, 190);
+            this.groupBox1.Size = new System.Drawing.Size(461, 212);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Carga de Datos";
@@ -66,7 +68,7 @@
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(235, 145);
+            this.btnCargar.Location = new System.Drawing.Point(234, 161);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(126, 23);
             this.btnCargar.TabIndex = 6;
@@ -115,6 +117,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre y Apellido;";
             // 
+            // btnCargarSQL
+            // 
+            this.btnCargarSQL.Location = new System.Drawing.Point(75, 161);
+            this.btnCargarSQL.Name = "btnCargarSQL";
+            this.btnCargarSQL.Size = new System.Drawing.Size(126, 23);
+            this.btnCargarSQL.TabIndex = 8;
+            this.btnCargarSQL.Text = "Cargar con SQL";
+            this.btnCargarSQL.UseVisualStyleBackColor = true;
+            this.btnCargarSQL.Click += new System.EventHandler(this.btnCargarSQL_Click);
+            // 
             // frmAgregarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,5 +153,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbAutomovil;
+        private System.Windows.Forms.Button btnCargarSQL;
     }
 }

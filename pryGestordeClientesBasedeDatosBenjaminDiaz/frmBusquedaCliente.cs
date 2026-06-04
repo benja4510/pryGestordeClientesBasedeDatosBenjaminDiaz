@@ -38,5 +38,20 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
 
             }
         }
+
+        private void lblCodigo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gboDatosCliente_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

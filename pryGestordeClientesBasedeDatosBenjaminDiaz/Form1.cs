@@ -34,5 +34,22 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             Form frmBusquedaCliente = new frmBusquedaCliente();
             frmBusquedaCliente.ShowDialog();
         }
+
+        private void agregarNuevosClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmAgregarCliente = new frmAgregarCliente();
+            frmAgregarCliente.ShowDialog();
+        }
+
+        private void editarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmEditarCliente = new frmEditarCliente();
+            frmEditarCliente.ShowDialog();
+        }
+
+        private void listadoDeClientesOrdenadosPorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

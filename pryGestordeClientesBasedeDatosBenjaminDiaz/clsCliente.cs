@@ -274,21 +274,21 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
                 comando.CommandText = Tabla;
 
                 adaptador = new OleDbDataAdapter(comando);
-                DataSet DS = new DataSet(); 
+                DataSet DS = new DataSet();
                 adaptador.Fill(DS);
 
                 DataTable tabla = DS.Tables[Tabla];
                 DataRow fila = tabla.NewRow();
 
-                fila["Nombre"]=nom;
-                fila["Deuda"]=deu;
-                fila["Limite"]=lim;
-                fila["idAutomovil"]=idAu;
+                fila["Nombre"] = nom;
+                fila["Deuda"] = deu;
+                fila["Limite"] = lim;
+                fila["idAutomovil"] = idAu;
 
                 tabla.Rows.Add(fila);
                 OleDbCommandBuilder ConciliaCambios = new OleDbCommandBuilder(adaptador);
                 adaptador.Update(DS, Tabla);
-                
+
                 conexion.Close();
 
             }
@@ -297,6 +297,119 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
                 MessageBox.Show(e.ToString());
             }
         }
+        public void SoloEstructura(Int32 idCliente)
+        {
+
+            try
+            {
+
+
+                conexion.ConnectionString = CadenaConexion;
+                conexion.Open();
+
+
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "";
+
+                comando.ExecuteNonQuery();
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+        public void Modificar(Int32 idCliente)
+        {
+            try
+            {
+                String sql = "";
+                sql = "UPDATE Clientes SET Limite = " + lim.ToString() + " WHERE idCliente = " + idCliente.ToString();
+
+
+                conexion.ConnectionString = CadenaConexion;
+
+
+                conexion.Open();
+
+
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "";
+
+                comando.ExecuteNonQuery();
+
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        public void Eliminar(Int32 idCliente)
+        {
+            try
+            {
+                String sql = "";
+                sql = "DELETE + FROM Cliente WHERE idCliente = " + idCliente.ToString();
+
+
+                conexion.ConnectionString = CadenaConexion;
+
+
+                conexion.Open();
+
+
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = sql;
+
+                comando.ExecuteNonQuery();
+
+
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        public void AgregarNuevoRegistro()
+        {
+            try
+            {
+                String sql = "";
+                sql = "INSERT INTO Cliente (Nombre, Deuda, Limite, idAutomovil)"; 
+                sql = sql + "VALUES ('"+ nom + "', 0, " + lim.ToString() + " , " + idAu.ToString() + ")" ; 
+
+                conexion.ConnectionString = CadenaConexion;
+
+
+                conexion.Open();
+
+
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = sql;
+
+                comando.ExecuteNonQuery();
+
+
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
     }
 }
 

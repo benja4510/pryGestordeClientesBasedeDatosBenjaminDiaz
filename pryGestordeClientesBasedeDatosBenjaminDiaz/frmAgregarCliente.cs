@@ -19,7 +19,7 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
 
         private void frmAgregarCliente_Load(object sender, EventArgs e)
         {
-            clsAutomovil auto = new clsAutomovil();
+              clsAutomovil auto = new clsAutomovil();
             auto.Listar(cmbAutomovil);
         }
 
@@ -36,6 +36,20 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             txtLimite.Text = "";
             cmbAutomovil.SelectedIndex = 0;
 
+        }
+
+        private void btnCargarSQL_Click(object sender, EventArgs e)
+        {
+            clsCliente x = new clsCliente();
+            x.Nombre = txtNombre.Text;
+            x.Limite = Convert.ToDecimal(txtLimite.Text);
+            x.idAutomovil = Convert.ToInt32(cmbAutomovil.SelectedValue);
+            x.AgregarNuevoRegistro();
+
+            MessageBox.Show("Datos Grabados");
+            txtNombre.Text = "";
+            txtLimite.Text = "";
+            cmbAutomovil.SelectedIndex = 0;
         }
     }
 }
