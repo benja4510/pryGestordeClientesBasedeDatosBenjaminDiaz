@@ -28,6 +28,17 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
 
         private void btnReportar_Click(object sender, EventArgs e)
         {
+            SaveFileDialog objArchivo = new SaveFileDialog();
+            objArchivo.Title = "Seleccione Carpeta y escriba nombre de archivo";
+            objArchivo.RestoreDirectory = true;
+            objArchivo.Filter = "Archivo separado por coma (*.csv) |*.csv|Archivo de texto (*.txt)|*.txt";
+
+
+
+
+
+            objArchivo.ShowDialog();
+
             clsCliente x = new clsCliente();
             x.ReporteCliente(dgvGrilla);
             MessageBox.Show("Reporte generado correctamente", "Reporte de Clientes Deudores", MessageBoxButtons.OK, MessageBoxIcon.Information);

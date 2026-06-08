@@ -47,9 +47,10 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             frmEditarCliente.ShowDialog();
         }
 
-        private void listadoDeClientesOrdenadosPorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void listadoClientesForEachToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form frmClientesForeach = new frmClientesForeach();
+            frmClientesForeach.ShowDialog();
         }
     }
 }

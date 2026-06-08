@@ -292,10 +292,32 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
                 conexion.Close();
 
             }
-            catch (Exception e)
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show(e.ToString());
+            //}
+            catch (FormatException)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show("Error: Formato de dato incorrecto. Por favor, revise los datos ingresados.");
             }
+            catch (DivideByZeroException)
+            {
+                MessageBox.Show("No se puede dividir por cero");
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("El valor del argumento no puede ser nulo");
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Índice fuera de rango. Verifique que los índices utilizados sean correctos.");
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Operación no válida. Verifique el estado de la conexión y los comandos.");
+            }
+
+
         }
         public void SoloEstructura(Int32 idCliente)
         {
@@ -385,8 +407,8 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             try
             {
                 String sql = "";
-                sql = "INSERT INTO Cliente (Nombre, Deuda, Limite, idAutomovil)"; 
-                sql = sql + "VALUES ('"+ nom + "', 0, " + lim.ToString() + " , " + idAu.ToString() + ")" ; 
+                sql = "INSERT INTO Cliente (Nombre, Deuda, Limite, idAutomovil)";
+                sql = sql + "VALUES ('" + nom + "', 0, " + lim.ToString() + " , " + idAu.ToString() + ")";
 
                 conexion.ConnectionString = CadenaConexion;
 
@@ -403,6 +425,109 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
 
 
                 conexion.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+
+
+        public void ListarForeach(DataGridView Grilla)
+        {
+            //try-catch para manejar posibles errores al conectar con la base de datos o al ejecutar la consulta
+            try
+            {
+                //Listar los clientes en el DataGridView
+                conexion.ConnectionString = CadenaConexion;
+
+                //Abrir la conexión
+                conexion.Open();
+
+                //Configurar el comando usando una consulta SQL de texto
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.Text; // <-- CAMBIADO
+                comando.CommandText = "SELECT * FROM [Cliente]";
+                //Configurar el adaptador para llenar el DataSet con los datos de la consulta
+                adaptador = new OleDbDataAdapter(comando);
+                DataSet ds = new DataSet();
+                adaptador.Fill(ds);
+
+                if (ds.Tables[Tabla].Rows.Count > 0)
+                {
+                    foreach (DataRow x in ds.Tables[Tabla].Rows)
+                    {
+                        Grilla.Rows.Add(x["Nombre"], x["Automovil"]);
+                    }
+                }
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+        public void ReporteCliente(String NombreArchivo)
+        {
+            try
+            {
+                conexion.ConnectionString = CadenaConexion;
+                conexion.Open();
+
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT * FROM [Cliente]";
+
+
+                DataSet DS = new DataSet();
+                OleDbDataReader DR = comando.ExecuteReader();
+                StreamWriter AD = new StreamWriter(NombreArchivo, false, Encoding.UTF8);
+
+                adaptador.Fill(DS, Tabla);
+
+                AD.WriteLine("Listado de clientes");
+                AD.WriteLine("Codigo;Nombre;Deuda"); // Usamos punto y coma para mantener el estándar de Excel
+
+                cantidad = 0;
+                deuda = 0;
+
+
+                if (DS.Tables[Tabla].Rows.Count > 0)
+                {
+                    foreach(DataRow fila in DS.Tables[Tabla].Rows)
+                    {
+                        if (Convert.ToInt32(fila["deuda"]) > 0)
+                        {
+
+                            AD.Write(fila["idCliente"]);
+                            AD.Write(";");
+                            AD.Write(fila["Nombre"]);
+                            AD.Write(";");
+                            AD.WriteLine(fila["Deuda"]);
+
+                            cantidad++;
+                            deuda = deuda + Convert.ToDecimal(fila["Deuda"]);
+                        }
+                    }
+                    AD.Write("Cantidad de CLientes:;;");
+                    AD.WriteLine(cantidad);
+                    AD.Write("Deudad de los clientes:;;");
+                    AD.WriteLine(deuda);
+                    AD.Write("Promedio de deuda");
+                    AD.WriteLine(deuda / cantidad);
+
+
+                }
+
+                // --- AQUÍ VA EL CLOSE DEL ARCHIVO ---
+                AD.Close();
+
+                DR.Close();
+                conexion.Close();
+
+                MessageBox.Show("Reporte generado con éxito.");
             }
             catch (Exception e)
             {

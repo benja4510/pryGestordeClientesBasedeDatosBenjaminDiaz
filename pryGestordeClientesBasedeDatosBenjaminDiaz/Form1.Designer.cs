@@ -43,6 +43,7 @@
             this.listadoDeClientesOrdenadosPorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.listadoClientesForEachToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +76,8 @@
             this.listadoToolStripMenuItem,
             this.toolStripSeparator2,
             this.listadoDeClientesDeudoresToolStripMenuItem,
-            this.listadoDeClientesOrdenadosPorToolStripMenuItem});
+            this.listadoDeClientesOrdenadosPorToolStripMenuItem,
+            this.listadoClientesForEachToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.clientesToolStripMenuItem.Text = "Clientes";
@@ -136,7 +138,6 @@
             this.listadoDeClientesOrdenadosPorToolStripMenuItem.Name = "listadoDeClientesOrdenadosPorToolStripMenuItem";
             this.listadoDeClientesOrdenadosPorToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.listadoDeClientesOrdenadosPorToolStripMenuItem.Text = "Listado de clientes ordenados por";
-            this.listadoDeClientesOrdenadosPorToolStripMenuItem.Click += new System.EventHandler(this.listadoDeClientesOrdenadosPorToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem
             // 
@@ -148,6 +149,13 @@
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // listadoClientesForEachToolStripMenuItem
+            // 
+            this.listadoClientesForEachToolStripMenuItem.Name = "listadoClientesForEachToolStripMenuItem";
+            this.listadoClientesForEachToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.listadoClientesForEachToolStripMenuItem.Text = "Listado clientes For each";
+            this.listadoClientesForEachToolStripMenuItem.Click += new System.EventHandler(this.listadoClientesForEachToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -182,6 +190,7 @@
         private System.Windows.Forms.ToolStripMenuItem listadoDeClientesOrdenadosPorToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editarClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listadoClientesForEachToolStripMenuItem;
     }
 }
 
