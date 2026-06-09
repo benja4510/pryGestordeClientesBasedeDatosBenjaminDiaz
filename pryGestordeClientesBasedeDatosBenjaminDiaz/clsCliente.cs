@@ -17,7 +17,7 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
         private OleDbCommand comando = new OleDbCommand();
         private OleDbDataAdapter adaptador = new OleDbDataAdapter();
 
-        private String CadenaConexion = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\Alumno\\Downloads\\Clientes.mdb";
+        private String CadenaConexion = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Clientes.mdb";
         private String Tabla = "Cliente";
 
         //Atributos para almacenar la deuda total y la cantidad de deudores
@@ -454,9 +454,9 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
                 DataSet ds = new DataSet();
                 adaptador.Fill(ds);
 
-                if (ds.Tables[Tabla].Rows.Count > 0)
+                if (ds.Tables[0].Rows.Count > 0)
                 {
-                    foreach (DataRow x in ds.Tables[Tabla].Rows)
+                    foreach (DataRow x in ds.Tables[0].Rows)
                     {
                         Grilla.Rows.Add(x["Nombre"], x["Automovil"]);
                     }

@@ -72,6 +72,7 @@
             this.Controls.Add(this.btnListar);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmListadoClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListadoClientes (DataSet)";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsulta)).EndInit();

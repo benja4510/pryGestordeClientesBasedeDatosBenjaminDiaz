@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCargarSQL = new System.Windows.Forms.Button();
             this.cmbAutomovil = new System.Windows.Forms.ComboBox();
             this.btnCargar = new System.Windows.Forms.Button();
             this.txtLimite = new System.Windows.Forms.TextBox();
@@ -37,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnCargarSQL = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Carga de Datos";
+            // 
+            // btnCargarSQL
+            // 
+            this.btnCargarSQL.Location = new System.Drawing.Point(75, 161);
+            this.btnCargarSQL.Name = "btnCargarSQL";
+            this.btnCargarSQL.Size = new System.Drawing.Size(126, 23);
+            this.btnCargarSQL.TabIndex = 8;
+            this.btnCargarSQL.Text = "Cargar con SQL";
+            this.btnCargarSQL.UseVisualStyleBackColor = true;
+            this.btnCargarSQL.Click += new System.EventHandler(this.btnCargarSQL_Click);
             // 
             // cmbAutomovil
             // 
@@ -117,16 +127,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre y Apellido;";
             // 
-            // btnCargarSQL
-            // 
-            this.btnCargarSQL.Location = new System.Drawing.Point(75, 161);
-            this.btnCargarSQL.Name = "btnCargarSQL";
-            this.btnCargarSQL.Size = new System.Drawing.Size(126, 23);
-            this.btnCargarSQL.TabIndex = 8;
-            this.btnCargarSQL.Text = "Cargar con SQL";
-            this.btnCargarSQL.UseVisualStyleBackColor = true;
-            this.btnCargarSQL.Click += new System.EventHandler(this.btnCargarSQL_Click);
-            // 
             // frmAgregarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,6 +134,7 @@
             this.ClientSize = new System.Drawing.Size(511, 248);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmAgregarCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAgregarCliente";
             this.Load += new System.EventHandler(this.frmAgregarCliente_Load);
             this.groupBox1.ResumeLayout(false);

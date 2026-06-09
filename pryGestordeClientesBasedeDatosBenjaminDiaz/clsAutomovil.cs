@@ -17,7 +17,7 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
         private OleDbCommand comando = new OleDbCommand();
         private OleDbDataAdapter adaptador = new OleDbDataAdapter();
 
-        private String CadenaConexion = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\Alumno\\Downloads\\Clientes.mdb";
+        private String CadenaConexion = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Clientes.mdb";
         private String Tabla = "automovil";
 
 

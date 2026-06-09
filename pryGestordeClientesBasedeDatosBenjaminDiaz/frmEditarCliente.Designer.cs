@@ -179,6 +179,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblCodigo);
             this.Name = "frmEditarCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditarCliente";
             this.Load += new System.EventHandler(this.frmEditarCliente_Load);
             this.gboDatosCliente.ResumeLayout(false);

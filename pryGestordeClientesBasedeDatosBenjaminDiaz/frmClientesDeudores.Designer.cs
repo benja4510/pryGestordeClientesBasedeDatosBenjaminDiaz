@@ -169,6 +169,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gboConsulta);
             this.Name = "frmClientesDeudores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmClientesDeudores";
             this.gboConsulta.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).EndInit();

@@ -52,5 +52,6 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             Form frmClientesForeach = new frmClientesForeach();
             frmClientesForeach.ShowDialog();
         }
+
     }
 }
