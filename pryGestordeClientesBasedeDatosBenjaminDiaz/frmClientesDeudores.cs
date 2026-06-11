@@ -43,5 +43,26 @@ namespace pryGestordeClientesBasedeDatosBenjaminDiaz
             x.ReporteCliente(dgvGrilla);
             MessageBox.Show("Reporte generado correctamente", "Reporte de Clientes Deudores", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+
+            prtVentana.ShowDialog();
+            prtDocumento.PrinterSettings = prtVentana.PrinterSettings;
+            prtDocumento.Print();
+            MessageBox.Show("Reporte Impreso Correctamente");
+        }
+
+        private void prtDocumento_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            clsCliente x = new clsCliente();
+            x.Imprimir(e);
+
+            //  Ejemplo de escritura directa
+            //  Font TipoLetra = new Font("Arial", 12);
+            //  e.Graphics.DrawString("Hola", TipoLetra, Brushes.Blue, 200, 200);
+
+        }
     }
 }
+
